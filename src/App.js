@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch} from "react-router-dom";
+import React from "react";
 
+//contenedor de mis componentes a compartir informcion 
+import { AuthProvider } from "./context/AuthContext";
+import Routes from "./Routes";
 function App() {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <AuthProvider>
+           <Routes/>
+          </AuthProvider>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

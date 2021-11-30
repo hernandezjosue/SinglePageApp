@@ -1,0 +1,34 @@
+.Card-funcional{
+    padding: 30px;
+    width: 300px;
+    margin: 30px 20px;
+    background-color: #f3e5e5;
+    box-shadow: 3px 3px 14px rgba(0, 0, 0, 0.3);
+    border-radius: 14px;
+
+    &__titulo{
+        @include titulos-principales;
+    }
+    &__button{
+        background-color: black;
+        color:white;
+        border-radius: 9px;
+        border: 1px solid black;
+        padding: 5px 10px;
+        cursor: pointer;
+    
+        &:hover{ //pseudoclase 
+            color: black;
+            background-color: #cece;
+            border: 1px solid black;
+        }
+
+        &:focus{
+            color: red;
+        }
+    }
+    
+    &__desc{
+        font-size: 12px;
+    }
+}
