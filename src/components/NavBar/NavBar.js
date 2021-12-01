@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { loginService } from "/Users/josuehernandez/Documents/App/gen/src/services/UserServices.js";
-import { AuthContext } from "/Users/josuehernandez/Documents/App/gen/src/context/AuthContext.js"; //contexto a usar
+import { loginService } from "/Users/josuehernandez/Documents/master/MasterCurse/src/services/UserServices.js";
+import { AuthContext } from "/Users/josuehernandez/Documents/master/MasterCurse/src/context/AuthContext.js"; //contexto a usar
 function NavBar() {
   const { setToken, token } = useContext(AuthContext);
   //context
