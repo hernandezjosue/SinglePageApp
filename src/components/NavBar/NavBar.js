@@ -37,8 +37,8 @@ function NavBar() {
       </button>
       <div classname="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <Link className="nav-item nav-link active" to="/">
-            Home{" "}
+          <Link className="nav-item nav-link active" to="/CounterFunctional">
+            pp
           </Link>
           {token ?(
               <Link className="nav-item nav-link" to="/Countries">
@@ -52,6 +52,9 @@ function NavBar() {
           
           <Link className="nav-item nav-link" to="/CounterFunctional">
             showCompon
+          </Link>
+          <Link className="nav-item nav-link" to="/Show">
+            mensj
           </Link>
           {token ? (
             <Link className="nav-link" onClick={logoutAction}>
