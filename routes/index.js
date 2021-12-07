@@ -82,17 +82,33 @@ router.patch('/users/:userid',async(req,res)=>{
     }
 
 })
+//delete fisico,debemos de evitar este tipo de delete
+// router.delete('/users/:userid',async(req,res)=>{
+//     const id = req.params.userid 
+//     const newEmail = req.body.email
+//     try {
+//         await User.findByIdAndDelete(id)
+//         res.status(200).send({message: "user was deleted"})
+//     } catch (error) {
+//         res.status(409).send(error)
+        
+//     }
+
+// })
+// delete logico 
 router.delete('/users/:userid',async(req,res)=>{
     const id = req.params.userid 
-    const newEmail = req.body.email
     try {
-        await User.findByIdAndDelete(id)
-        res.status(200).send({message: "user was deleted"})
+         await User.findByIdAndUpdate(id,
+            {$set:{isActive :false}},
+            {
+            new:true,
+        })
+        res.status(200).send({message: 'user was deleted'})
     } catch (error) {
         res.status(409).send(error)
         
     }
 
 })
-
 module.exports = router

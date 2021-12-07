@@ -11,6 +11,10 @@ const userSchema = new mongosee.Schema({
         type : String,
         required : true
     },
+    isActive :{
+        type:Boolean,
+        default : true
+    }
 });
 
 const User = mongosee.model('User', userSchema)
