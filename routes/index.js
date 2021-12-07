@@ -27,19 +27,72 @@ router.post('/suma', (req, res) => {
 
 });
 
-router.get('/users/:userid', (req, res) => {
-    console.log(req.params.userid)
-    if (req.params.userid == 2) {
-        res.status(200).send('todo bin ')
-        console.log(res.statusCode)
+router.get('/users/:userid',async (req, res) => {
+    const id= req.params.userid
+    try {
+        const user = await User.findById(id)
+        console.log(user)
+        res.status(200).send(user)
 
-    } else {
-        res.status(404)
-        console.log(res.statusCode)
+
+    } catch (error) {
+        res.status(404).send(error)
     }
 });
-router.get('/users/', (req, res) => {
-    res.send(req.status(200).query)
+
+router.get('/users',async (req, res) => {
+    try {
+        const user = await User.find()
+        console.log(user)
+        res.status(200).send(user)
+
+
+    } catch (error) {
+        res.status(404).send(error)
+    }
 });
+
+router.put('/users/:userid',async(req,res)=>{
+    const id = req.params.userid 
+    const newData = req.body
+    try {
+        const updateUser = await User.findByIdAndUpdate(id,newData,{
+            new:true,
+        })
+        res.status(200).send(updateUser)
+    } catch (error) {
+        res.status(409).send(error)
+        
+    }
+
+})
+router.patch('/users/:userid',async(req,res)=>{
+    const id = req.params.userid 
+    const newEmail = req.body.email
+    try {
+        const updateUser = await User.findByIdAndUpdate(id,
+            {$set:{email:newEmail}},
+            {
+            new:true,
+        })
+        res.status(200).send(updateUser)
+    } catch (error) {
+        res.status(409).send(error)
+        
+    }
+
+})
+router.delete('/users/:userid',async(req,res)=>{
+    const id = req.params.userid 
+    const newEmail = req.body.email
+    try {
+        await User.findByIdAndDelete(id)
+        res.status(200).send({message: "user was deleted"})
+    } catch (error) {
+        res.status(409).send(error)
+        
+    }
+
+})
 
 module.exports = router
